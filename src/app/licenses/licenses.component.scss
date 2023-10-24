@@ -1,0 +1,39 @@
+.popup {
+    position: relative;
+    display: inline-block;
+}
+
+.popup-content {
+    // display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: #f9f9f9;
+    color: #be2c2c;
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    width: 500px;
+}
+
+.popup:hover .popup-content {
+    display: block;
+}
+
+.close {
+    color: #888;
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #555;
+}
+
+.limited-width {
+    max-width: 20px; /* Set the maximum width to 200 pixels or your desired width */
+    overflow: hidden; /* Hide any content that overflows the maximum width */
+    text-overflow: ellipsis; /* Display an ellipsis (...) for truncated content */
+    white-space: nowrap; /* Prevent line breaks within the cell */
+  }

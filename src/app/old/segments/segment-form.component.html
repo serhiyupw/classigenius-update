@@ -1,0 +1,70 @@
+<form class="form-horizontal" [formGroup]="form" #f="ngForm" (ngSubmit)="submit()">
+    <div class="card" style="width:500px">
+        <div class="card-heading text-white bg-primary">
+            <h3 class="card-title">Segment Form</h3>
+        </div>
+        <div class="card-body">
+            <div *ngIf="form.errors" class="alert alert-danger">
+                Some fields are invalid
+            </div>
+            <!-- <div formGroupName="details"> -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input formControlName="name" id="name" type="text" class="form-control" style="width:400px">
+                <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+                    <div *ngIf="name.errors.required">Name is required</div>
+                    <div *ngIf="name.errors.minlength">Name should have minimum of
+                        {{name.errors.minlength.requiredLength}}
+                        characters </div>
+                </div>
+            </div>
+            <!-- <div class="form-group">
+                <label for="segmenttype">Segment Type</label>
+                <input formControlName="segmenttype" id="segmenttype" type="text" class="form-control" style="width:100px">
+                <div *ngIf="segmenttype.touched && segmenttype.invalid" class="alert alert-danger">
+                    <div *ngIf="segmenttype.errors.required">Segment Type is required</div>
+                    <div *ngIf="segmenttype.errors.pattern">Segment Type must be a number</div>
+                </div>
+            </div> -->
+
+
+            <div class="form-group">
+                <label for="segmenttype">Segment Type</label>
+                <select formControlName="segmenttype" name="segmenttype" id="segmenttype" class="form-control"
+                    style="width:400px">
+                    <option value=""></option>
+                    <option *ngFor="let sType of segmenttypes" [value]="sType.id">{{ sType.name }}</option>
+                </select>
+                <div *ngIf="segmenttype.touched && segmenttype.invalid" class="alert alert-danger">
+                    <div *ngIf="segmenttype.errors.required">segment type is required</div>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input formControlName="location" id="location" type="text" class="form-control" style="width:100px">
+            </div>
+            <div class="form-group">
+                <label for="key1">Key 1</label>
+                <input formControlName="key1" id="key1" type="text" class="form-control" style="width:100px">
+            </div>
+            <div class="form-group">
+                <label for="key1">Key 2</label>
+                <input formControlName="key2" id="key2" type="text" class="form-control" style="width:100px">
+            </div>
+            <div class="form-group">
+                <label for="key3">Key 3</label>
+                <input formControlName="key3" id="key3" type="text" class="form-control" style="width:100px">
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button [disabled]="!form.valid" class="btn btn-primary" type="submit">{{buttonText}}</button>
+                <button routerLink="/segments" class="btn btn-primary" type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+</form>

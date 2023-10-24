@@ -1,0 +1,72 @@
+<div class="card" style="width:600px">
+    <div class="card-heading">
+        <h3 class="card-title">Checkout</h3>
+    </div>
+    <div class="card-body">
+        <!-- <table id="licensepayments" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>License Key</th>
+                    <th>Years</th>
+                    <th>Amount</th>
+                    <th>Currency</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let licensepayment of licensePayments">
+
+                    <td>{{LicenseKey(licensepayment.licenseid)}} </td>
+                    <td>{{licensepayment.months /12 }} </td>
+
+                    <td>{{licensepayment.amount}}</td>
+                    <td>{{licensepayment.currency}}</td>
+                    <td>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <button class="table-link-button" [routerLink]=""
+                                (click)="delete(licensepayment)">Delete</button>
+                            <button class="table-link-button"
+                                [routerLink]="['/license',licensepayment.licenseid]">View/Edit</button>
+                        </div>
+                    </td> -->
+
+                <!-- </tr>
+
+            </tbody>
+
+        </table> -->
+
+        <br />
+        <!-- Total Order: {{this.order.totalamount}} {{this.order.currency}} -->
+     
+        <div style="text-align: center;">
+            <h3><b>Total Order: {{this.order.totalamount}} {{this.order.currency}}</b></h3>
+            <br/>
+            <div class="btn-group btn-group-sm" role="group">
+                <button class="table-link-button" [routerLink]="" (click)="OrderPaid('1234')">Simulate Pay</button>
+            </div>
+          
+        </div>
+
+    </div>
+
+    <div class="card-footer">
+
+        <div *ngIf="ordernotpaid(); then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>
+            <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+        </ng-template>
+        <ng-template #elseBlock>
+            Thank you for your payment. <br />
+        </ng-template>
+
+        <div class="btn-group" role="group">
+            <button routerLink="/licenses" [disabled]="ordernotpaid()" class="btn btn-primary" type="button">Ok</button>
+
+            <button  (click)="CancelPayment()" class="btn btn-primary" type="button">Cancel</button>
+        </div>
+    </div>
+
+
+
+</div>

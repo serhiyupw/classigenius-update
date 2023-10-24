@@ -1,0 +1,33 @@
+<div class="card" style="width:600px">
+    <div class="card-heading text-white bg-primary">
+        <h3 class="card-title">Site Plans List</h3>
+    </div>
+    <div class="card-body">
+        <a [routerLink]="['/siteplans',0]">New Site Plan</a>
+        <br />
+        <table id="siteplans" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Site Id</th>
+                    <th>Plan Id</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let siteplan of siteplans">
+                    <td> {{siteplan.name}}</td>
+                    <td> {{siteplan.siteid}}</td>
+                    <td> {{siteplan.planid}}</td>
+                    <td>
+                        <a [routerLink]="['/siteplans',siteplan.siteplanid]">Update</a>
+                        <br />
+                        <a [routerLink]="" (click)="deleteSiteplan(siteplan)">Delete</a>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+</div>

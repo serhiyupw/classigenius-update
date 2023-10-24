@@ -1,0 +1,150 @@
+<div class="card " style="width:1000px">
+    <div class="card-heading">
+        <h3 class="card-title">Licenses List</h3>
+    </div>
+    <div class="card-body">
+
+        <div *ngIf="isAccountUser() || isIntegratorUser()">
+            <button class="top-link-button" [routerLink]="['/license',0]">New License</button>
+        </div>
+
+        <div *ngIf="isWebProjectUser()">
+            <div class="btn-group" role="group">
+
+                <button class="top-link-button" (click)="generateNewlicensebasedOnPlan('1')">Generate Trial Setup
+                    License</button>
+                <button class="top-link-button" (click)="generateNewlicensebasedOnPlan('2')">Generate Trial Runtime
+                    License </button>
+                <button class="top-link-button" [routerLink]="['/multilicensepurchase']">Purchase License/s</button>
+                <!-- <button class="top-link-button" (click)="generateNewlicensebaedOnPlan('4')">Order Runtime License</button> -->
+
+            </div>
+        </div>
+
+
+        <br /><br />
+        <!-- <div class="card " style="width:400px"> -->
+        <!-- <formly-form [model]="Filtermodel" [fields]="fields" [form]="form"></formly-form> -->
+        <!-- </div> -->
+        <div *ngIf="isAdminUser()">
+            <label for="Accountid">Account: </label>
+            <select class="form-control" name="Accountid" id="Accountid" (change)="OnAccountSelect()"
+                style="width:200px" [(ngModel)]="selectAccount">
+                <option value=""></option>
+                <option *ngFor="let account of accounts" [value]="account.accountid">{{ account.companyname }}</option>
+            </select>
+            <br />
+        </div>
+        <div *ngIf="ShowIntegratorField()">
+            <label for="Integratorid">Integrator: </label>
+            <select class="form-control" name="Integratorid" id="Integratorid" (change)="OnIntegratorSelect(true)"
+                style="width:200px" [(ngModel)]="selectIntegrator">
+                <option value=""></option>
+                <option *ngFor="let integrator of integratorsFiltered" [value]="integrator.integratorid">{{
+                    integrator.companyname
+                    }}</option>
+            </select>
+        </div>
+        <div *ngIf="ShowProjectField()">
+            <label for="projectid">Project </label>
+            <select class="form-control" name="projectid" id="projectid" (change)="FilterRecords()" style="width:200px"
+                [(ngModel)]="selectProject">
+                <option value=""></option>
+                <option *ngFor="let project of projectsFiltered" [value]="project.projectid">{{ project. name }}
+                </option>
+            </select>
+        </div>
+        <br /><br />
+        <table id="licenses" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <div *ngIf="isAdminUser()">
+                        <th>Account</th>
+                    </div>
+                    <div *ngIf="!isWebProjectUser()">
+                        <th>Integrator</th>
+
+                        <th>Project</th>
+                    </div>
+                    <!-- <th>Type</th> -->
+                    <th>Plan</th>
+                    <th>License Key</th>
+                    <!-- <th>Payment Status</th> -->
+                    <!-- <th class="limited-width">Activated Station</th> -->
+                    <th>Activated Station</th>
+                    <th>Expiration</th>
+                    <th>Years</th>
+                    <th>Paid</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr *ngFor="let license of licensesFiltered" [ngbPopover]="popContent" triggers="mouseenter:mouseleave"  openDelay="500"> -->
+                <tr *ngFor="let license of licensesFiltered" triggers="mouseenter:mouseleave" openDelay="500">
+
+                    <!-- <ng-template #popContent>
+                        <div class="popup">
+                            <div class="popup-content">
+                                <b>
+                                    Environment: {{license.environment}} <br />
+                                    Comments: {{license.comments}} <br />
+                                </b>
+                            </div>
+                        </div>
+                    </ng-template> -->
+
+                    <div *ngIf="isAdminUser()">
+                        <td>{{AccountName(license.accountid)}}</td>
+                    </div>
+                    <div *ngIf="!isWebProjectUser()">
+                        <td> {{IntegratorName(license.integratorid)}}</td>
+
+                        <td> {{ProjectName(license.projectid)}}</td>
+                    </div>
+                    <!-- <td> {{license.licensetype}}</td> -->
+                    <td> {{PlanName(license.planid)}}</td>
+                    <td> {{license.licensekey}}</td>
+                    <!-- <td> {{PaymentStatus(license.licenseid)}}</td> -->
+
+                    <td> {{ActivationStatus(license.licenseid)}}</td>
+                    <td> {{license.expirationdate}}</td>
+                    <td> {{license.periodmonths / 12}}</td>
+                    <td> {{license.totalamount}}</td>
+
+                    <td>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <div *ngIf="!isWebProjectUser()">
+                                <button class="table-link-button"
+                                    [routerLink]="['/license',license.licenseid]">Update</button>
+                                <button class="table-link-button"
+                                    [routerLink]="['/licenseusage',license.licenseid]">Usage</button>
+                                <button class="table-link-button"
+                                    [routerLink]="['/licensepayments',license.licenseid]">Payments</button>
+                                <button class="table-link-button"
+                                    [routerLink]="['/licenseactivations',license.licenseid]">Activations</button>
+                            </div>
+                            <div *ngIf="isWebProjectUser() && PaymentStatus(license.licenseid)!='Paid'">
+                                <button class="table-link-button"
+                                    [routerLink]="['/licenseupgrade',license.licenseid]">Purchase</button>
+                            </div>
+                            <div *ngIf="isWebProjectUser() && PaymentStatus(license.licenseid)=='Paid'">
+                                <button class="table-link-button"
+                                    [routerLink]="['/licenseupgrade',license.licenseid]">Extend</button>
+                            </div>
+                            <!-- <div *ngIf="isWebProjectUser() && PaymentStatus(license.licenseid)=='Paid'"> -->
+                            <!-- <div *ngIf="PaymentStatus(license.licenseid)=='Paid'" > -->
+                            <!-- <button class="table-link-button"
+                                (click)="emailLicense(license.licenseid)">Email</button> -->
+                            <!-- </div> -->
+                            <!-- <button class="table-link-button" [routerLink]="" (click)="delete(license)">Delete</button> -->
+
+                        </div>
+
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+</div>

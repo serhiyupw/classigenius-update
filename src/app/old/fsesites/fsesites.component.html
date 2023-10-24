@@ -1,0 +1,32 @@
+<div class="card card-primary" style="width:600px">
+    <div class="card-heading text-white bg-primary">
+        <h3 class="card-title">FSESites List</h3>
+    </div>
+    <div class="card-body">
+        <a [routerLink]="['/fsesites',0]">New FSE Site</a>
+        <br />
+        <table id="fsesites" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>IP</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fsesite of fsesites">
+                    <td> {{fsesite.name}}</td>
+                    <td> {{fsesite.ip}}</td>
+
+                    <td>
+                        <a [routerLink]="['/fsesites',fsesite.siteid]">Update</a>
+                        <br />
+                        <a [routerLink]="" (click)="deleteFsesite(fsesite)">Delete</a>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+</div>

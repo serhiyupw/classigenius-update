@@ -1,0 +1,46 @@
+<div class="card " style="width:1000px">
+    <div class="card-heading">
+        <h3 class="card-title">plans List</h3>
+    </div>
+    <div class="card-body">
+
+        <button class="top-link-button" [routerLink]="" [routerLink]="" (click)="planRoute(0,'/plans')" >New plan</button>
+        
+     
+        <br /><br />
+        <table id="licenses" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Trial Days</th>
+                    <th>Validity Months</th>
+                
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let plan of plans">
+              
+                    <td> {{plan.description}}</td>
+                    <td> {{plan.amount}}</td>
+                    <td> {{plan.trialperioddays}}</td>
+                    <td> {{plan.periodmonths}}</td>
+                
+
+                    <td>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <button class="table-link-button"  [routerLink]=""  (click)="planRoute(plan.planid,'/plans')" >Update</button>
+                         
+                            <button class="table-link-button" [routerLink]="" (click)="delete(plan)">Delete</button>
+                        </div>
+
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+</div>

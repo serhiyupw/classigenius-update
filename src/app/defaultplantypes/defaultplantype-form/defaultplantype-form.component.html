@@ -1,0 +1,24 @@
+<form class="form-horizontal" [formGroup]="form" #f="ngForm" (ngSubmit)="submit()">
+    <div class="card" style="width:1200px">
+        <div class="card-heading ">
+            <h3 class="card-title">Default Plan Type</h3>
+        </div>
+        <div class="card-body">
+            <formly-form [model]="defaultplantype" [fields]="fields" [form]="form"></formly-form>
+        </div>
+
+            <div class="card-footer">
+                <div *ngIf="form.errors" class="alert alert-danger">
+                      Some fields are invalid
+                </div>
+                <div class="btn-group" role="group" >
+                    <button [disabled]="!form.valid" class="bottom-form-button" type="submit">{{buttonText}}</button>
+                    <!-- <button   (click)="cancelRoute()"  class="bottom-form-button" type="button">Cancel</button> -->
+                    <button routerLink="/defaultplantypes" class="bottom-form-button" type="button">Cancel</button>
+                </div>  
+            </div>
+        </div>
+    </form>
+   
+        
+

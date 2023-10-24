@@ -1,0 +1,100 @@
+<form class="form-horizontal" [formGroup]="form" #f="ngForm" (ngSubmit)="submit()">
+    <div class="card" style="width:500px">
+        <div class="card-heading text-white bg-primary">
+            <h3 class="card-title">Client Form</h3>
+        </div>
+        <div class="card-body">
+           
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input formControlName="name" id="name" type="text" class="form-control" style="width:400px">
+                <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+                    <div *ngIf="name.errors.required">Name is required</div>
+                    <div *ngIf="name.errors.minlength">Name should have minimum of
+                        {{name.errors.minlength.requiredLength}}
+                        characters </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="integratorid">Integrator ID</label>
+                <select formControlName="integratorid" name="integratorid" id="integratorid" class="form-control" style="width:400px">
+                    <option value=""></option>
+                    <option *ngFor="let integrator of integrators" [value]="integrator.integratorid">{{ integrator.name }}</option>
+                </select>
+                <div *ngIf="integratorid.touched && integratorid.invalid" class="alert alert-danger">
+                    <div *ngIf="integratorid.errors.required">integrator id is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="segmentid">Segment ID</label>
+                <!-- <input formControlName="segmentid" name="segmentid" id="segmentid" class="form-control" style="width:400px"> -->
+                <select formControlName="segmentid" name="segmentid" id="segmentid" class="form-control" style="width:400px">
+                    <option value=""></option>
+                    <option *ngFor="let segment of segments" [value]="segment.segmentid">{{ segment.name }}</option>
+                </select>
+                <div *ngIf="segmentid.touched && segmentid.invalid" class="alert alert-danger">
+                    <div *ngIf="segmentid.errors.required">segment id is required</div>
+                </div>
+            </div>
+   
+            <div class="form-group">
+                <label for="country">Country</label>
+                <input formControlName="country" name="country" id="country" class="form-control" style="width:50px">
+                <div *ngIf="country.touched && country.invalid" class="alert alert-danger">
+                    <div *ngIf="country.errors.required">country is required</div>
+                    <div *ngIf="country.errors.minlength">country should have 2 letters</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="vatnumber">Vat Number</label>
+                <input formControlName="vatnumber" id="vatnumber" type="text" class="form-control" style="width:400px">
+                <div *ngIf="vatnumber.touched && vatnumber.invalid" class="alert alert-danger">
+                    <div *ngIf="vatnumber.errors.required">Vat number is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="clienttype">Client Type</label>
+                <select formControlName="clienttype" name="clienttype" id="clienttype" class="form-control" style="width:400px">
+                    <option value=""></option>
+                    <option *ngFor="let ctype of clienttypes" [value]="ctype.id">{{ ctype.name }}</option>
+                </select>
+                <div *ngIf="clienttype.touched && clienttype.invalid" class="alert alert-danger">
+                    <div *ngIf="clienttype.errors.required">Client Type is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cpacode">Cpa Code</label>
+                <input formControlName="cpacode" name="cpacode" id="cpacode" class="form-control" style="width:100px">
+                <div *ngIf="cpacode.touched && cpacode.invalid" class="alert alert-danger">
+                    <div *ngIf="cpacode.errors.required">Cpa Code is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="billinginfo">Billing Info</label>
+                <input formControlName="billinginfo" name="billinginfo" id="billinginfo" class="form-control" style="width:100px">
+                <!-- <div *ngIf="billinginfo.touched && billinginfo.invalid" class="alert alert-danger">
+                    <div *ngIf="billinginfo.errors.required">Cpa Code is required</div>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <div *ngIf="form.errors" class="alert alert-danger">
+                <!-- <div class="alert alert-danger"> -->
+                Some fields are invalid
+            </div>
+            <div class="btn-group" role="group" >
+                <button [disabled]="!form.valid" class="btn btn-primary" type="submit">
+                    {{buttonText}}</button>
+                <button routerLink="/clients" class="btn btn-primary" type="button">Cancel</button>
+            </div>
+        </div>
+
+    </div>
+</form>

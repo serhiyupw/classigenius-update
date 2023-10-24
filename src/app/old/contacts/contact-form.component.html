@@ -1,0 +1,126 @@
+<form class="form-horizontal" [formGroup]="form" #f="ngForm" (ngSubmit)="submit()">
+    <div class="card card-primary" style="width:500px">
+        <div class="card-heading text-white bg-primary">
+            <h3 class="card-title">Contact Form</h3>
+        </div>
+        <div class="card-body">
+            <div *ngIf="form.errors" class="alert alert-danger">
+                Some fields are invalid
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input formControlName="name" id="name" type="text" class="form-control" style="width:400px">
+                <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+                    <div *ngIf="name.errors.required">Name is required</div>
+                    <div *ngIf="name.errors.minlength">Name should have minimum of
+                        {{name.errors.minlength.requiredLength}}
+                        characters </div>
+                </div>
+            </div>
+            
+
+            <div class="form-group">
+                <label for="clientid">Client ID</label>
+                <select formControlName="clientid" name="clientid" id="clientid" class="form-control" style="width:400px">
+                    <option value=""></option>
+                    <option *ngFor="let client of clients" [value]="client.clientid">{{ client.name }}</option>
+                </select>
+                <div *ngIf="clientid.touched && clientid.invalid" class="alert alert-danger">
+                    <div *ngIf="clientid.errors.required">client id is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="integratorid">Integrator ID</label>
+                <select formControlName="integratorid" name="integratorid" id="integratorid" class="form-control" style="width:400px">
+                    <option value=""></option>
+                    <option *ngFor="let integrator of integrators" [value]="integrator.integratorid">{{ integrator.name }}</option>
+                </select>
+                <div *ngIf="integratorid.touched && integratorid.invalid" class="alert alert-danger">
+                    <div *ngIf="integratorid.errors.required">integrator id is required</div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="country">Country</label>
+                <input formControlName="country" id="country" type="text" class="form-control" style="width:400px">
+                <!-- <div *ngIf="country.touched && country.invalid" class="alert alert-danger">
+                    <div *ngIf="country.errors.required">country is required</div>
+                    <div *ngIf="country.errors.minlength">country should have minimum of
+                        {{country.errors.minlength.requiredLength}}
+                        characters </div>
+                </div> -->
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input formControlName="phone" id="phone" type="text" class="form-control" style="width:400px">
+                <!-- <div *ngIf="phone.touched && phone.invalid" class="alert alert-danger">
+                    <div *ngIf="phone.errors.required">phone is required</div>
+                    <div *ngIf="phone.errors.minlength">phone should have minimum of
+                        {{phone.errors.minlength.requiredLength}}
+                        characters </div>
+                </div> -->
+                <!-- </div> -->
+
+                <!-- <div class="form-group"> -->
+                <label for="mobilephone">Mobile</label>
+                <input formControlName="mobilephone" id="mobilephone" type="text" class="form-control"
+                    style="width:400px">
+                <!-- <div *ngIf="mobilephone.touched && mobilephone.invalid" class="alert alert-danger">
+                    <div *ngIf="mobilephone.errors.required">mobilephone is required</div>
+                    <div *ngIf="mobilephone.errors.minlength">mobilephone should have minimum of
+                        {{mobilephone.errors.minlength.requiredLength}}
+                        characters </div>
+                </div> -->
+                <!-- </div> -->
+
+                <!-- <div class="form-group"> -->
+                <label for="email">Email</label>
+                <input formControlName="email" id="email" type="text" class="form-control" style="width:400px">
+                <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+                    <div *ngIf="email.errors.required">email is required</div>
+                    <div *ngIf="email.errors.email">wrong email address</div>
+                </div>
+           <!-- </div> -->
+
+            <!-- <div class="form-group"> -->
+                <label for="preferemail">
+                    <input type="checkbox" formControlName="preferemail" id="preferemail"  style="width:15px">Prefer Email
+                    <!-- <label for="preferemail">preferemail</label> -->
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="fixedMonthlycharge">Fixed Monthly Charge</label>
+                <input formControlName="fixedMonthlycharge" id="fixedMonthlycharge" type="text" class="form-control" style="width:400px">
+                <!-- <div *ngIf="fixedMonthlycharge.touched && fixedMonthlycharge.invalid" class="alert alert-danger">
+                    <div *ngIf="fixedMonthlycharge.errors.required">fixedMonthlycharge is required</div>
+                    <div *ngIf="fixedMonthlycharge.errors.minlength">fixedMonthlycharge should have minimum of
+                        {{fixedMonthlycharge.errors.minlength.requiredLength}}
+                        characters </div>
+                </div> -->
+           
+                <label for="minmonthlycharge">Minimum Monthly Charge</label>
+                <input formControlName="minmonthlycharge" id="minmonthlycharge" type="text" class="form-control" style="width:400px">
+                <!-- <div *ngIf="minmonthlycharge.touched && minmonthlycharge.invalid" class="alert alert-danger">
+                    <div *ngIf="minmonthlycharge.errors.required">minmonthlycharge is required</div>
+                    <div *ngIf="minmonthlycharge.errors.minlength">minmonthlycharge should have minimum of
+                        {{minmonthlycharge.errors.minlength.requiredLength}}
+                        characters </div>
+                </div> -->
+            </div>
+
+        </div>
+
+        <div class="card-footer">
+            <div class="btn-group" role="group">
+                <button [disabled]="!form.valid" class="btn btn-primary" type="submit">
+                    {{buttonText}}</button>
+                <button routerLink="/contacts" class="btn btn-primary" type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+</form>

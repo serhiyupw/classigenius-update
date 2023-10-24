@@ -1,0 +1,83 @@
+<!-- <a [routerLink]="['/segments',0]">New Segment</a> -->
+<!-- <br/> -->
+<div class="card" style="width:600px">
+    <div class="card-heading text-white bg-primary">
+        <h3 class="card-title">Segment List</h3>
+    </div>
+    <div class="card-body">
+
+        <a [routerLink]="['/segments',0]">New Segment</a>
+        <br/>
+        <table id="segments" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Segment Type</th>
+                    <th>Location</th>
+                    <th>Key1</th>
+                    <th>Key2</th>
+                    <th>Key3</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let segment of segments">
+                    <td> {{segment.name}}</td>
+                
+                    <td> {{SegmentType(segment.segmenttype)}} </td> 
+                    <td> {{segment.location}}</td>
+                    <td> {{segment.key1}}</td>
+                    <td> {{segment.key2}}</td>
+                    <td> {{segment.key3}}</td>
+                  
+                    <td>
+                        <a [routerLink]="['/segments',segment.segmentid]">Update</a>
+                        <br />
+                        <a [routerLink]="" (click)="deleteSegment(segment)">Delete</a>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+</div> 
+<!-- 
+<div class="card text-white bg-primary" style="width:600px">
+    <div class="card-header">
+         <h3 class="card-title">Segment List</h3>
+    </div>
+    <a [routerLink]="['/segments',0]">New Segment</a>
+        <br>
+        <table id="segments" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Segment Type</th>
+                    <th>Location</th>
+                    <th>Key1</th>
+                    <th>Key2</th>
+                    <th>Key3</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngfor="let segment of segments">
+                    <td>{{segment.name}}</td>
+                 
+                    <td>{{SegmentType(segment.segmenttype)}}</td>
+                    <td>{{segment.location}}</td>
+                    <td>{{segment.key1}}</td>
+                    <td>{{segment.key2}}</td>
+                    <td>{{segment.key3}}</td>
+                 
+                    <td>
+                        <a [routerLink]="['/segments',segment.segmentid]">Update</a>
+                        <br />
+                        <a (click)="deleteSegment(segment)">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->

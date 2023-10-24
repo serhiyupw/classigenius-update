@@ -1,0 +1,31 @@
+<div class="card" style="width:600px">
+    <div class="card-heading text-white bg-primary">
+        <h3 class="card-title">Plans List</h3>
+    </div>
+    <div class="card-body">
+        <a [routerLink]="['/plans',0]">New Plan</a>
+        <br />
+        <table id="plans" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Plan Description</th>
+                  
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let plan of plans">
+                    <td> {{plan.plandesc}}</td>
+                  
+                    <td>
+                        <a [routerLink]="['/plans',plan.planid]">Update</a>
+                        <br />
+                        <a [routerLink]="" (click)="deleteplan(plan)">Delete</a>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+</div>

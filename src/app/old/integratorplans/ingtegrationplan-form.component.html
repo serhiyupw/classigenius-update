@@ -1,0 +1,45 @@
+<form class="form-horizontal" [formGroup]="form" #f="ngForm" (ngSubmit)="submit()">
+    <div class="card" style="width:500px">
+        <div class="card-heading text-white bg-primary">
+            <h3 class="card-title">integrator plan Form</h3>
+        </div>
+        <div class="card-body">
+
+            <div class="form-group">
+                <label for="integratorid">integrator</label>
+                <select formControlName="integratorid" name="integratorid" id="integratorid" class="form-control"
+                    style="width:400px">
+                    <option value=""></option>
+                    <option *ngFor="let integrator of integrators" [value]="integrator.integratorid">{{ integrator.name }}</option>
+                </select>
+                <div *ngIf="integratorid.touched && integratorid.invalid" class="alert alert-danger">
+                    <div *ngIf="integratorid.errors.required">integrator is required</div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="planid">plan</label>
+                <select formControlName="planid" name="planid" id="planid" class="form-control" style="width:400px">
+                    <option value=""></option>
+                    <option *ngFor="let plan of plans" [value]="plan.planid">{{ plan.plandesc }}</option>
+                </select>
+                <div *ngIf="planid.touched && planid.invalid" class="alert alert-danger">
+                    <div *ngIf="planid.errors.required">plan is required</div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <div *ngIf="form.errors" class="alert alert-danger">
+                    Some fields are invalid
+                </div>
+                <div class="btn-group" role="group">
+                    <button [disabled]="!form.valid" class="btn btn-primary" type="submit"> {{buttonText}}</button>
+                    <button routerLink="/integratorplans" class="btn btn-primary" type="button">Cancel</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</form>

@@ -1,0 +1,57 @@
+<div class="card " style="width:650px">
+    <div class="card-heading">
+        <h3 class="card-title">User List</h3>
+    </div>
+    <div class="card-body">
+        <button class="top-link-button" [routerLink]="['/user',0]">New User</button>
+        <br /><br />
+        <!-- <div class="form-group"> -->
+        <div *ngIf="isAdminUser()">
+            <label for="Accountid">Account: </label>
+            <select class="form-control" name="Accountid" id="Accountid" (change)="OnAccountSelect($event.target.value)"
+                style="width:200px">
+                <option value=""></option>
+                <option *ngFor="let account of accounts" [value]="account.accountid">{{ account.companyname }}</option>
+            </select>
+            <br /> <br />
+        </div>
+
+
+        <table id="users" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <div *ngIf="isAdminUser()">
+                        <th>Account</th>
+                    </div>
+                    <th>Email</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let user of usersFiltered">
+                    <div *ngIf="isAdminUser()">
+                        <td>{{AccountName(user.accountid)}}</td>
+                    </div>
+                    <td>{{user.email}}</td>
+                    <td>{{user.fullname}}</td>
+
+                    <td>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <!-- <button class="btn btn-primary" [routerLink]="['/user',user.userid]">Update</button> -->
+
+                            <button class="table-link-button" [routerLink]=""
+                                (click)="userRoute(user.userid,'/users')">Update</button>
+
+                            <div *ngIf="!isSameUser(user)">
+                                <button class="table-link-button" (click)="deleteuser(user)">Delete</button>
+                            </div>
+                        </div>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

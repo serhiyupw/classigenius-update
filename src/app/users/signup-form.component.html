@@ -1,0 +1,48 @@
+<!-- <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit(form)">
+    <div class="card" style="width:500px">
+        <div class="card-heading text-white bg-primary">
+            <h3 class="card-title">Signup</h3>
+        </div>
+        <div class="card-body">
+            <formly-form [model]="model" [fields]="fields" [form]="form"></formly-form>
+        </div>
+        <div class="card-footer">
+            <div *ngIf="error!=''" class="alert alert-danger">{{error}}</div>
+            
+            <div class="btn-group" role="group" >
+                <button [disabled]="!form.valid" class="bottom-form-button" type="submit">Create User</button>
+                <button routerLink="/home" class="bottom-form-button" type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</form> -->
+
+<form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit(form)">
+    <div class="login-form-container">
+        <div class="login-form">
+            <div class="login-title">
+                <p class="login-title-first">Signup</p>
+                <p class="login-title-second">Welcome to the ClassiGenius Portal.</p>
+                <p class="login-title-second">Fill in the details below to create a new user.</p>
+            </div>
+            <div class="mt-4">
+                <input type = "text" placeholder="Company Name" class="login-input companyname mt-2" formControlName="companyname"  > 
+                <input type = "text" placeholder="Contact Name" class="login-input contact mt-2" formControlName="contact"  > 
+                <input type = "email" placeholder="Email" class="login-input email mt-2" formControlName="email"  > 
+                <input type = "Password" placeholder="Password" class="login-input password mt-2" formControlName="password">
+                <input type = "Password" placeholder="Confirm Password" class="login-input password2 mt-2" formControlName="password2">
+            </div>
+            <div class="login-footer mt-2">
+                <div *ngIf="form.errors" class="alert alert-danger">{{error}}</div>
+                
+                <div class="mt-4">
+                    <button class="btn-login left" type="submit" [disabled]="!form.valid">CREATE USER</button>
+                    <button class="btn-login" routerLink="/home">CANCEL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</form>
+

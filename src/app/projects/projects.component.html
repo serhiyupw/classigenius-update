@@ -1,0 +1,63 @@
+<div class="card " style="width:600px">
+    <div class="card-heading">
+        <h3 class="card-title">Projects List</h3>
+    </div>
+    <div class="card-body">
+        <button class="top-link-button" [routerLink]="" (click)="projectRoute(0,'/projects')">New
+            Project</button>
+        <br /> <br />
+        <div *ngIf="isAdminUser()">
+            <label for="Accountid">Account: </label>
+            <select class="form-control" name="Accountid" id="Accountid" (change)="OnAccountSelect()"
+                style="width:200px" [(ngModel)]="selectAccount">
+                <option value=""></option>
+                <option *ngFor="let account of accounts" [value]="account.accountid">{{ account.companyname }}</option>
+            </select>
+            <br />
+        </div>
+        <div *ngIf="!isIntegratorUser()">
+            <label for="Integratorid">Integrator: </label>
+            <select class="form-control" name="Integratorid" id="Integratorid" (change)="OnIntegratorSelect()"
+                style="width:200px" [(ngModel)]="selectIntegrator">
+                <option value=""></option>
+                <option *ngFor="let integrator of integratorsFiltered" [value]="integrator.integratorid">{{
+                    integrator.companyname }}</option>
+            </select>
+        </div>
+        <br /> <br />
+        <table id="projects" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <div *ngIf="isAdminUser()">
+                        <th>Account</th>
+                    </div>
+                    <th>Integrator</th>
+                    <th>Project Name</th>
+                    <th>Project Key</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let project of projectsFiltered">
+                    <div *ngIf="isAdminUser()">
+                        <td>{{AccountName(project.accountid)}}</td>
+                    </div>
+                    <td> {{IntegratorName(project.integratorid)}}</td>
+                    <td> {{project.name}}</td>
+                    <td> {{project.projectkey}}</td>
+
+                    <td>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <!-- <button class="btn btn-primary" [routerLink]="['/project',project.projectid]">Update</button> -->
+                            <button class="table-link-button" [routerLink]=""
+                                (click)="projectRoute(project.projectid,'/projects')">Update</button>
+                            <button class="table-link-button" [routerLink]="" (click)="delete(project)">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+</div>

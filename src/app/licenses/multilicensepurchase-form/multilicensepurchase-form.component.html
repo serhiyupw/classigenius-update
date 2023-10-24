@@ -1,0 +1,53 @@
+<form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="card" style="width:1000px">
+        <div class="card-heading">
+            <h3 class="card-title">Purchase Licenses</h3>
+        </div>
+        <div class="card-body">
+            <formly-form [model]="multiLicensePurchase" [fields]="fields" [form]="form"></formly-form>
+
+            <br /><br />
+            <h2><label>Shopping cart</label></h2>
+            <table style="width: 600px;" id="licenses" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>License Type</th>
+                        <!-- <th>License Key</th> -->
+                        <th>Years</th>
+                        <th>Licenses</th>
+                        <th>Total Price (USD)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of multiLicenseCartItems;">
+                        <td>{{planTypeDescription(item.plantype)}}</td>
+                        <!-- <td>{{item.licensekey}}</td> -->
+                        <td>{{item.years}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.amount}}</td>
+                        <td><button type="button" class="btn btn-danger" (click)="removeCartItem(item.plantype)">Remove</button></td>
+                    </tr>
+                </tbody>
+
+            </table>
+            <br/>
+            <p><b><h2> Total Amount: {{calculateTotlaAmount()}} USD</h2></b></p>
+        </div>
+     
+    </div>
+    <div class="card-footer">
+        <div *ngIf="form.errors" class="alert alert-danger">
+            Some fields are invalid
+        </div>
+        <div class="btn-group" role="group">
+            <button [disabled]="calculateTotlaAmount()==0" class="bottom-form-button" type="button"
+                (click)="payNow()">Pay Now</button>
+
+            <button routerLink="/licenses" class="bottom-form-button" type="button">Cancel</button>
+        </div>
+    </div>
+
+    
+
+</form>

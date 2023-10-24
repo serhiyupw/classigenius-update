@@ -1,0 +1,53 @@
+<form class="form-horizontal" [formGroup]="form" #f="ngForm" (ngSubmit)="submit()">
+    <div class="card" style="width:500px">
+        <div class="card-heading text-white bg-primary">
+            <h3 class="card-title">Site Plan Form</h3>
+        </div>
+        <div class="card-body">
+            <div *ngIf="form.errors" class="alert alert-danger">
+                Some fields are invalid
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input formControlName="name" id="name" type="text" class="form-control" style="width:400px">
+                <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+                    <div *ngIf="name.errors.required">Name is required</div>
+                    <div *ngIf="name.errors.minlength">Name should have minimum of
+                        {{name.errors.minlength.requiredLength}}
+                        characters </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="siteid">Site</label>
+                <select formControlName="siteid" name="siteid" id="siteid" class="form-control" style="width:400px">
+                    <option value=""></option>
+                    <option *ngFor="let site of fsesites" [value]="site.siteid">{{ site.name }}</option>
+                </select>
+                <div *ngIf="siteid.touched && siteid.invalid" class="alert alert-danger">
+                    <div *ngIf="siteid.errors.required">Site id is required</div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="planid">Plan ID</label>
+                <input formControlName="planid" id="planid" type="text" class="form-control" style="width:100px">
+                <div *ngIf="planid.touched && planid.invalid" class="alert alert-danger">
+                    <div *ngIf="planid.errors.required">Plan id is required</div>
+                    <!-- <div *ngIf="planid.errors.pattern">Must be a valid IP address</div> -->
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <div class="btn-group" role="group" >
+                <button [disabled]="!form.valid" class="btn btn-primary" type="submit">
+                    {{buttonText}}</button>
+                <button routerLink="/siteplans" class="btn btn-primary" type="button">Cancel</button>
+            </div>
+        </div>
+
+    </div>
+</form>

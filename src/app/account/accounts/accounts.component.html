@@ -1,0 +1,36 @@
+<div class="card " style="width:500px">
+    <div class="card-heading">
+        <h3 class="card-title">Accounts List</h3>
+    </div>
+    <div class="card-body">
+        <button class="top-link-button" [routerLink]="" (click)="accountRoute(0,'/accounts')">New Account</button>
+        <br /> <br />
+
+        <table id="projects" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Contact Name</th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let account of accounts">
+                    <td>{{account.companyname}}</td>
+                    <td>{{account.contactname}}</td>
+
+                    <td>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <!-- <button class="btn btn-primary" [routerLink]="['/project',project.projectid]">Update</button> -->
+                            <button class="table-link-button" [routerLink]=""   (click)="accountRoute(account.accountid,'/accounts')">Update</button>
+                            <button class="table-link-button" [routerLink]="" (click)="delete(account)">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+</div>

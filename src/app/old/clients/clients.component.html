@@ -1,0 +1,33 @@
+<div class="card " style="width:600px">
+    <div class="card-heading text-white bg-primary">
+        <h3 class="card-title">Clients List</h3>
+    </div>
+    <div class="card-body">
+        <a [routerLink]="['/clients',0]">New Client</a>
+        <br />
+        <table id="clients" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th>Vat Number</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let client of clients">
+                    <td> {{client.name}}</td>
+                    <td> {{client.country}}</td>
+                    <td> {{client.vatnumber}}</td>
+                    <td>
+                        <a [routerLink]="['/clients',client.clientid]">Update</a>
+                        <br />
+                        <a [routerLink]="" (click)="deleteClient(client)">Delete</a>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+</div>

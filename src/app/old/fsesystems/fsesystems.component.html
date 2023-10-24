@@ -1,0 +1,29 @@
+<div class="card card-primary" style="width:600px">
+    <div class="card-heading text-white bg-primary">
+        <h3 class="card-title">FSE Systems List</h3>
+    </div>
+    <div class="card-body">
+        <a [routerLink]="['/fsesystems',0]">New FSE System</a>
+        <br />
+        <table id="fsesystems" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fsesystem of fsesystems">
+                    <td> {{fsesystem.name}}</td>
+                    <td> {{fsesystem.description}}</td>
+                    <td>
+                        <a [routerLink]="['/fsesystems',fsesystem.fsesystemid]">Update</a>
+                        <br />
+                        <a [routerLink]="" (click)="delete(fsesystem)">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

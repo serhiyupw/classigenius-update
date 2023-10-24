@@ -1,0 +1,219 @@
+<p></p>
+
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-ZpX9RlP6ilSSd+LPLONKTTvJNwEl1MuuprwKj/Ld+I5J5Ly5x5zvwKkEed+2aKPZUPJiWl1LZjSkdZ//ItLN5A==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+<script src="https://kit.fontawesome.com/6ddc4cd1a0.js" crossorigin="anonymous"></script>
+
+<div *ngIf="currentUser">
+  <div class="btn-group mr-3">
+    <!-- <div *ngIf="!isWebProjectUser()"> -->
+      <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+        <button routerLink="/" class="btn btn-light">Home</button>
+      </div>
+    <!-- </div> -->
+
+    <div *ngIf="!isAdminuser()==true  && !isWebProjectUser()==true">
+      <div class="btn-group mr-3">
+        <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-light" (click)="account()">Account</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isWebProjectUser()">
+      <div class="btn-group mr-3">
+        <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-light" (click)="AccountUser()">Account Details</button>
+
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isWebProjectUser()">
+      <div class="btn-group mr-3">
+        <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-light" (click)="download()">Download</button>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="isAdminuser()==true">
+
+      <div class="btn-group mr-3">
+        <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-light" (click)="accounts()">Accounts</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div *ngIf="isUserAccountManager()==true">
+      <div class="btn-group mr-3">
+        <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-light" (click)="Users()">Users</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div *ngIf="!isUserAccountManager()==true">
+      <div class="btn-group mr-3">
+        <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-light" (click)="User()">User</button>
+        </div>
+      </div>
+    </div> -->
+
+    <div *ngIf="isAccountUser()==true">
+      <div class="btn-group mr-3">
+        <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-light" (click)="Integrators()">Integrators</button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isIntegratorUser()==true ">
+      <div class="btn-group mr-3">
+        <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-light" (click)="Integrator()">Integrator</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!isProjectUser() && !isWebProjectUser()">
+      <div class="btn-group mr-3">
+        <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-light" (click)="Projects()">Projects</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isProjectUser()==true">
+      <div class="btn-group mr-3">
+        <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-light" (click)="Project()">Project</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isAccountUser()==true">
+      <div class="btn-group mr-3">
+        <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-light" (click)="DefaultPlanTypes()">Default Plan Types</button>
+
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isAccountUser()==true">
+      <div class="btn-group mr-3">
+        <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-light" (click)="Plans()">Plans</button>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-group mr-3">
+      <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+        <button class="btn btn-light" (click)="Licenses()">Licenses</button>
+
+      </div>
+    </div>
+
+
+
+
+    <div *ngIf="!isWebProjectUser()==true">
+      <div class="btn-group mr-3">
+        <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-light" (click)="Solutions()">Solutions</button>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <div *ngIf="!isWebProjectUser()==true">
+    <div class="btn-group mr-3">
+      <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+        <button class="btn btn-light" (click)="CheckOut()">CheckOut</button>
+
+      </div>
+    </div> -->
+
+    <div *ngIf="isWebProjectUser()">
+      <div class="btn-group mr-3">
+        <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-light" (click)="BuyNow()">Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isAdminuser()==true">
+      <div class="btn-group mr-3">
+        <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-light" (click)="globals()">Globals</button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- <div class="btn-group mr-3">
+     
+      <div class="btn-group"  role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-dark" ><i class="fa-solid fa-cart-shopping"></i></button>
+      </div>     
+    </div> -->
+
+
+  <div class="btn-group mr-3">
+    <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+      <button class="btn btn-dark" ngbDropdownToggle>{{currentUser.fullname}}</button>
+      <div class="dropdown-menu" ngbDropdownMenu>
+        <button class="btn btn-light" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- <div class="btn-group mr-3">
+      <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+        <button class="btn btn-light" ngbDropdownToggle>Storage</button>
+        <div class="dropdown-menu" ngbDropdownMenu>
+          <button routerLink="/segments" ngbDropdownItem>Segments</button>
+          <button routerLink="/fsesites" ngbDropdownItem>FSESites</button>
+          <button routerLink="/siteplans" ngbDropdownItem>Site Plans</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-group mr-3">
+      <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+        <button class="btn btn-light" ngbDropdownToggle>Clients</button>
+        <div class="dropdown-menu" ngbDropdownMenu>
+          <button routerLink="/integrators" ngbDropdownItem>Integrators</button>
+          <button routerLink="/clients" ngbDropdownItem>Clients</button>
+          <button routerLink="/contacts" ngbDropdownItem>Contacts</button>
+          <button routerLink="/users" ngbDropdownItem>Users</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-group mr-3">
+      <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+        <button class="btn btn-light" ngbDropdownToggle>Plans</button>
+        <div class="dropdown-menu" ngbDropdownMenu>
+          <button routerLink="/plans" ngbDropdownItem>Plans</button>
+          <button routerLink="/clientplans" ngbDropdownItem>Client Plans</button>
+          <button routerLink="/integratorplans" ngbDropdownItem>Integrator Plans</button>
+          <button routerLink="/fsesystems" ngbDropdownItem>FSE Systems</button>
+        </div>
+      </div>
+    </div> -->
+
+
+
+  <p></p>

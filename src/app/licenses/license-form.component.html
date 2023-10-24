@@ -1,0 +1,27 @@
+<form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit(form)">
+    <div class="card" style="width:1300px">
+        <div class="card-heading">
+            <h3 class="card-title">License</h3>
+        </div>
+        <div class="card-body">
+            <formly-form [model]="license" [fields]="fields" [form]="form"></formly-form>
+        </div>
+        <div class="card-footer">
+            <div *ngIf="form.errors" class="alert alert-danger">
+                Some fields are invalid
+            </div>
+            <div class="btn-group" role="group">
+                <button [disabled]="!form.valid" class="bottom-form-button" type="submit">{{buttonText}}</button>
+                <div *ngIf="showPayButton()">
+                    <button class="bottom-form-button" type="button" (click)="AddToCart(true,false)">Add To Cart</button>
+                    <button class="bottom-form-button" type="button" (click)="AddToCart(true,true)">Pay Now</button>
+                </div>
+                <!-- <div *ngIf="showExtendButton()">
+                    <button class="bottom-form-button" type="button" (click)="AddToCart(true,true)">Extend</button>
+                </div> -->
+                <button routerLink="/licenses" class="bottom-form-button" type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</form>

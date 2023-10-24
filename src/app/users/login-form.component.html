@@ -1,0 +1,52 @@
+<!-- <form class="form-horizontal" [formGroup]="form" #f="ngForm" (ngSubmit)="submit()">
+    <div class="card" style="width:500px">
+        <div class="card-heading text-white bg-primary">
+            <h3 class="card-title">Login123</h3>
+        </div>
+
+        <div class="card-body">
+            <formly-form [model]="model" [fields]="fields" [form]="form"></formly-form>
+        </div>
+
+        <div class="card-footer">
+            <div *ngIf="form.errors" class="alert alert-danger">{{error}}</div>
+            <div class="btn-group" role="group">
+
+                <button [disabled]="!form.valid" class="bottom-form-button" type="submit">Login</button>
+                <button routerLink="/forgotpassword" class="bottom-form-button" type="button">Forgot Password</button>
+                <button routerLink="/landingpage" class="bottom-form-button" type="button">Register New Account</button>
+            </div>
+        </div>
+    </div>
+</form> -->
+<form class="form-horizontal" [formGroup]="form" #f="ngForm" (ngSubmit)="submit()">
+    <div class="login-form-container">
+        <div class="login-form">
+            <div class="login-title">
+                <p class="login-title-first">Login</p>
+                <p class="login-title-second">Welcome to the ClassiGenius Portal.</p>
+                <p class="login-title-second">Fill in the details below to log into your account</p>
+            </div>
+            <div class="mt-4">
+                <input type = "email" placeholder="Email" class="login-input email" formControlName="email" > 
+                <input type = "Password" placeholder="Password" class="login-input password mt-2" formControlName="password">
+            </div>
+            <div class="login-footer mt-2">
+                <div *ngIf="form.errors" class="alert alert-danger">{{error}}</div>
+                <div class="login-forgot">
+                    <div>
+                        <input type = "checkbox" class="login-checkbox" > <span class="login-checkbox-title"> Remember me </span>
+                    </div>
+                    <div>
+                        <a class="login-checkbox-title" routerLink="/forgotpassword">Forgot Password</a>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <button class="btn-login left" type="submit" >LOGIN</button>
+                    <button class="btn-login" routerLink="/signup">SIGNUP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</form>

@@ -1,0 +1,103 @@
+<form class="form-horizontal" [formGroup]="form" #f="ngForm" (ngSubmit)="submit()">
+    <div class="card" style="width:500px">
+        <div class="card-heading text-white bg-primary">
+            <h3 class="card-title">Plan Form</h3>
+        </div>
+        <div class="card-body">
+            <div *ngIf="form.errors" class="alert alert-danger">
+                Some fields are invalid
+            </div>
+
+            <div class="form-group">
+                <label for="plandesc">Plan description</label>
+                <input formControlName="plandesc" id="plandesc" type="text" class="form-control" style="width:400px">
+                <div *ngIf="plandesc.touched && plandesc.invalid" class="alert alert-danger">
+                    <div *ngIf="plandesc.errors.required">plan description is required</div>
+                    <div *ngIf="plandesc.errors.minlength">plan description should have minimum of
+                        {{plandesc.errors.minlength.requiredLength}}
+                        characters </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="comments">Comments</label>
+                <input formControlName="comments" id="comments" type="text" class="form-control" style="width:400px">
+            </div>
+
+            <!-- <div class="form-group">
+                <label for="systemid">System ID</label>
+                <select formControlName="systemid" name="systemid" id="systemid" class="form-control" style="width:400px">
+                    <option value=""></option>
+                    <option *ngFor="let systemid of systemids" [value]="site.systemid">{{ site.name }}</option>
+                </select>
+                <div *ngIf="systemid.touched && systemid.invalid" class="alert alert-danger">
+                    <div *ngIf="systemid.errors.required">system id is required</div>
+                </div>
+
+            </div> -->
+
+            <div class="form-group">
+                <label for="priority">priority</label>
+                <input formControlName="priority" id="priority" type="text" class="form-control" style="width:400px">
+            </div>
+
+            <div class="form-group">
+                <label for="recdoccharge">Recognized Doc Charge</label>
+                <input formControlName="recdoccharge" id="recdoccharge" type="text" class="form-control"
+                    style="width:400px">
+
+                <label for="recpagecharge">Recognized Page Charge</label>
+                <input formControlName="recpagecharge" id="recpagecharge" type="text" class="form-control"
+                    style="width:400px">
+
+                <label for="recnfdoccharge">Recognized Doc Charge Without fields</label>
+                <input formControlName="recnfdoccharge" id="recnfdoccharge" type="text" class="form-control"
+                    style="width:400px">
+
+                <label for="recnfpagecharge">Recognized Page Charge Without fields</label>
+                <input formControlName="recnfpagecharge" id="recnfpagecharge" type="text" class="form-control"
+                    style="width:400px">
+
+                <label for="norecpagecharge">No Recognized Page charge</label>
+                <input formControlName="norecpagecharge" id="norecpagecharge" type="text" class="form-control"
+                    style="width:400px">
+
+                <label for="lineitemcharge">Line Item Charge</label>
+                <input formControlName="lineitemcharge" id="lineitemcharge" type="text" class="form-control"
+                    style="width:400px">
+            </div>
+
+            <div class="form-group">
+                <label for="sla1">SLA 1</label>
+                <input formControlName="sla1" id="sla1" type="text" class="form-control" style="width:400px">
+
+                <label for="sla2">SLA 2</label>
+                <input formControlName="sla2" id="sla2" type="text" class="form-control" style="width:400px">
+
+                <label for="sla2discount">Discount if only SLA2 Met</label>
+                <input formControlName="sla2" id="sla2" type="text" class="form-control" style="width:400px">
+           </div>
+
+            <div class="form-group">
+                <label for="archive">
+                    <input type="checkbox" formControlName="archive" id="archive" style="width:15px">archive
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="archiveplan">Archive plan</label>
+                <input formControlName="archiveplan" id="archiveplan" type="text" class="form-control"
+                    style="width:400px">
+            </div>
+
+            <div class="card-footer">
+                <div class="btn-group" role="group">
+                    <button [disabled]="!form.valid" class="btn btn-primary" type="submit">
+                        {{buttonText}}</button>
+                    <button routerLink="/plans" class="btn btn-primary" type="button">Cancel</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>

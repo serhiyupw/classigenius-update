@@ -1,0 +1,54 @@
+<div class="card " style="width:600px">
+    <div class="card-heading">
+
+        <h3 class="card-title">Solution Permissions List</h3>
+    </div>
+    <div class="card-body">
+
+        Solution: {{solutionName}}
+        <br/><br />
+        <button class="btn btn-primary btn-sm" [routerLink]=""
+            (click)="SolutionPermissionFormRoute(0,'/solutionpermissions/'+solutionid)">New Permission</button>
+        <br/><br />
+        <table id="solutionpermissions" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <!-- <th>ID</th> -->
+                    <th>Permission Type</th>
+                    <th>Permission For</th>
+                    <th>Expiration Date</th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let solutionpermission of solutionpermissions">
+                    <!-- <div *ngIf="isAdminUser()">
+                        <td>{{AccountName(license.accountid)}}</td>
+                    </div> -->
+                    <!-- <td> {{solutionpermission.solutionpermissionid}}</td> -->
+                    <td> {{PermissionType(solutionpermission.permissiontype)}}</td>
+                    <td> {{PermissionValue(solutionpermission)}}</td>
+                    <td> {{solutionpermission.expirationdate}}</td>
+
+                    <td>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <button class="table-link-button" [routerLink]=""
+                                (click)="SolutionPermissionFormRoute(solutionpermission.solutionpermissionid,'/solutionpermissions/'+solutionid)">Update</button>
+
+                            <button class="table-link-button" [routerLink]=""
+                                (click)="delete(solutionpermission)">Delete</button>
+                        </div>
+
+                    </td>
+                </tr>
+            </tbody>
+
+
+        </table>
+    </div>
+    <div class="card-footer">
+        <button routerLink="" (click)="backroute()" class="table-link-button" type="button">Back</button>
+    </div>
+
+</div>

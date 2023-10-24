@@ -1,0 +1,283 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import "~bootstrap/dist/css/bootstrap.css"; */
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {}
+
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid red;
+}
+
+.card-heading {
+  padding-top: 10px;
+  padding-left: 20px;
+  background-color: deepskyblue;
+}
+
+.card-body {
+  padding-left: 20px;
+  padding-right: 50px;
+}
+
+.card-footer {
+  background-color: deepskyblue;
+}
+
+.form-group {
+  padding-left: 20px;
+  padding-right: 50px;
+}
+
+.btn-group button {
+  margin: 5px;
+}
+
+.top-link-button {
+
+  /* background-color:  lightskyblue; */
+  /* color: blue; */
+
+  background-color: #0074d9;
+  color: #fff;
+
+  padding: 10px 20px;
+  border: none;
+  /* border-radius: 5px; */
+
+  padding: .25rem .5rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  border-radius: .2rem;
+}
+
+.table-link-button {
+
+  background-color: #0074d9;
+  color: #fff;
+
+  /* background-color:  lightskyblue; */
+  /* color: blue; */
+
+  padding: 10px 20px;
+  border: none;
+  /* border-radius: 5px; */
+
+  padding: .25rem .5rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  border-radius: .2rem;
+}
+
+.bottom-form-button {
+  background-color: lightskyblue;
+  color: blue;
+
+  padding: 10px 20px;
+  border: none;
+  /* border-radius: 5px; */
+
+  padding: .25rem .5rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  border-radius: .2rem;
+}
+
+.bottom-form-button:disabled {
+  background-color: lightgray;
+  color: blue;
+  cursor: not-allowed;
+}
+
+
+/* Login page */
+.login-container {
+  display: flex;
+  height: 100vh;
+}
+
+.login-content {
+  /* background-color: green; */
+  width: 50%;
+  height: 100%;
+
+}
+
+.login-banner {
+  width: 50%;
+  background-color: #102553;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0px;
+}
+
+.login-banner img {
+  width: 80%;
+  height: auto;
+
+}
+
+
+.login-form-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
+  width: 465px;
+  height: auto;
+  /* border: 1px solid green; */
+}
+
+.login-title-first {
+  color: #0F1F41;
+  font-family: Montserrat;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 150%;
+}
+
+.login-title-second {
+  color: #0F1F41;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
+
+.btn-login {
+  color: #0F1F41;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+  border-radius: 4px;
+  border: 1px solid #0F1F41;
+  /* width: 101px; */
+  padding : 0 20px;
+  height: 33px;
+}
+
+.btn-login.left {
+  margin-right: 15px;
+}
+
+.btn-login:hover {
+  background: #0F1F41;
+  color: white;
+}
+
+.login-checkbox {
+  background: #F5F8FA;
+  box-shadow: 0px 4px 50px -10px rgba(15, 31, 65, 0.15);
+}
+
+.login-checkbox-title {
+  color: #0F1F41;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  /* 21px */
+}
+
+.login-forgot {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-input {
+  padding: 10px 0px 10px 40px;
+  width: 100%;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  /* 27px */
+}
+
+.login-input.companyname {
+  background-image: url("./assets/img/companyName.png");
+  background-repeat: no-repeat;
+  background-color: white;
+  background-position: 10px 10px;
+}
+
+.login-input.contact {
+  background-image: url("./assets/img/contactName.png");
+  background-repeat: no-repeat;
+  background-color: white;
+  background-position: 10px 10px;
+}
+
+.login-input.email {
+  background-image: url("./assets/img/email.png");
+  background-repeat: no-repeat;
+  background-color: white;
+  background-position: 10px 10px;
+  padding-left: 40px;
+  z-index: 100;
+}
+
+.login-input.password {
+  background-image: url("./assets/img/password.png");
+  background-repeat: no-repeat;
+  background-color: white;
+  background-position: 10px 10px;
+}
+
+.login-input.password2 {
+  background-image: url("./assets/img/confirmpwd.png");
+  background-repeat: no-repeat;
+  background-color: white;
+  background-position: 10px 10px;
+}
+
+@media screen and (max-width : 992px) {
+  .login-form-container {
+    height: 50vh;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .login-form {
+    margin: 0px 10px;
+  }
+}
+
+
+
+
+
+@media screen and (max-width:992px) {
+  .login-container {
+    display: block;
+  }
+
+  .login-content {
+    width: 100%;
+    height: 60%;
+  }
+
+  .login-banner {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media screen and (max-width:576px) {
+  .login-banner {
+    height: 50vh;
+  }
+}

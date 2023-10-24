@@ -1,0 +1,48 @@
+<div class="card" style="width:600px">
+  <div class="card-heading">
+      <h3 class="card-title">Checkout</h3>
+  </div>
+  <div class="card-body">
+      <table id="integrators" class="table table-bordered table-hover">
+          <thead>
+              <tr>
+                  <th>License Key</th>
+                  <th>Amount</th>
+                  <th>Currency</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              <!-- <tr *ngFor="let integrator of integrators"> -->
+                <tr>
+                  <td>{{license.licensekey}}</td>
+                  <td>{{order.totalamount}}</td>
+                  <td>{{order.currency}}</td>
+                
+              </tr>
+
+          </tbody>
+
+      </table>
+  </div>
+  <div class="card-footer"> 
+
+    <div *ngIf="ordernotpaid(); then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+    </ng-template>
+    <ng-template #elseBlock>
+      Thank you for your payment. <br/>
+    </ng-template>
+
+    <div class="btn-group" role="group">
+      <button routerLink="/home" [disabled]="ordernotpaid()" class="btn btn-primary" type="button">Ok</button>
+ 
+      <button routerLink="/home" class="btn btn-primary" type="button">Cancel</button>
+    </div>
+  </div>
+
+  
+
+</div>
+

@@ -1,0 +1,41 @@
+<form class="form-horizontal" [formGroup]="form" #f="ngForm" (ngSubmit)="submit()">
+    <div class="card" style="width:500px">
+        <div class="card-heading text-white bg-primary">
+            <h3 class="card-title">FSE Systems Form</h3>
+        </div>
+        <div class="card-body">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input formControlName="name" id="name" type="text" class="form-control" style="width:400px">
+                <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+                    <div *ngIf="name.errors.required">Name is required</div>
+                    <div *ngIf="name.errors.minlength">Name should have minimum of
+                        {{name.errors.minlength.requiredLength}}
+                        characters </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input formControlName="description" id="description" type="text" class="form-control" style="width:400px">
+                <div *ngIf="description.touched && description.invalid" class="alert alert-danger">
+                    <div *ngIf="description.errors.required">Description is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <!-- <div *ngIf="!form.valid" class="alert alert-danger">
+                Some fields are invalid
+            </div> -->
+            <div class="btn-group" role="group" >
+
+                <button [disabled]="!form.valid" class="btn btn-primary" type="submit">{{buttonText}}</button>
+
+                <button routerLink="/fsesystems" class="btn btn-primary" type="button">Cancel</button>
+
+            </div>
+        </div>
+
+    </div>
+</form>

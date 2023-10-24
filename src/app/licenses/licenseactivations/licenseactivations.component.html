@@ -1,0 +1,34 @@
+<div class="card " style="width:500px">
+    <div class="card-heading">
+        <h3 class="card-title">Activations</h3>
+    </div>
+    <div class="card-body">
+
+        License Key: {{licensekey}}
+        <br /><br />
+
+        <table id="usage" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Station Code</th>
+                    <th>Activation Date/time</th>
+                    <th>DeActivation Date/time</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let activation of licenseactivations">
+                    <td> {{activation.stationcode}}</td>
+                    <td> {{activation.activationdatetime}}</td>
+                    <td> {{activation.deactivationdatetime}}</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+    <div class="card-footer">
+        <button routerLink="" (click)="backroute()" class="table-link-button" type="button">Back</button>
+    </div> 
+
+</div>

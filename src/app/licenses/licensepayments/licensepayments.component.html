@@ -1,0 +1,49 @@
+<div class="card " style="width:900px">
+    <div class="card-heading">
+
+        <h3 class="card-title">Payments</h3>
+    </div>
+    <div class="card-body">
+
+        License Key: {{licensekey}}
+        <br/><br />
+       
+        <table id="usage" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Amount</th>
+                    <th>Currency</th>
+                    <th>Reference</th>
+                    <th>Pay Method</th>
+                    <th>Payment Date</th>
+                    <th>Start Date</th>
+                    <th>Expiration Date</th>
+                    <th>Activated</th>
+                  
+                    <!-- <th></th> -->
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let payment of licensepayments">
+                 
+                    <td> {{payment.amount}}</td>
+                    <td> {{payment.currency}}</td>
+                    <td> {{payment.payreference}}</td>
+                    <td> {{payment.paymethod}}</td>
+                    <td> {{payment.paymentdate}}</td>
+                    <td> {{payment.startdate}}</td>
+                    <td> {{payment.expirationdate}}</td> 
+                    <td> {{payment.activated}}</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+    <div class="card-footer">
+        <button routerLink="" (click)="backroute()" class="table-link-button" type="button">Back</button>
+    </div>
+
+</div>

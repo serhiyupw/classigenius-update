@@ -1,0 +1,19 @@
+<form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit(form)">
+    <div class="card" style="width:500px">
+        <div class="card-heading text-white bg-primary">
+            <h3 class="card-title">Signup</h3>
+        </div>
+        <div class="card-body">
+            <formly-form [model]="model" [fields]="fields" [form]="form"></formly-form>
+        </div>
+        <div class="card-footer">
+            <div *ngIf="form.errors" class="alert alert-danger">Some fields are invalid</div>
+            <div class="btn-group" role="group" >
+                <button [disabled]="!form.valid" class="btn btn-primary" type="submit">Create User</button>
+                <button routerLink="/home" class="btn btn-primary" type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</form>
+

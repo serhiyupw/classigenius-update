@@ -1,0 +1,37 @@
+<div class="card " style="width:400px">
+    <div class="card-heading">
+        <h3 class="card-title">Solution Versions List</h3>
+    </div>
+    <div class="card-body">
+     
+        Solution: {{solutionName}}
+        <br/><br />
+        <!-- <button class="btn btn-primary btn-sm" [routerLink]="" (click)="SolutionVersionsFormRoute(0,'/solutionversions/'+solutionid)">New Version</button> -->
+        <!-- <br/><br/>   -->
+        <table id="solutionperversions" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>CT version</th>
+                    <th>Owner version</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let solutionversion of solutionversions">
+                   <td>{{solutionversion.ctversion}}</td>
+                   <td>{{solutionversion.ownerversion}}</td>
+                    <td>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <button class="table-link-button" [routerLink]=""  (click)="SolutionVersionsFormRoute(solutionversion.solutionversionid,'/solutionversions/'+solutionid)">Update</button>
+                           
+                            <button class="table-link-button" [routerLink]="" (click)="delete(solutionversion)">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <button routerLink="" (click)="backroute()" class="table-link-button" type="button">Back</button>
+    </div>
+</div>
